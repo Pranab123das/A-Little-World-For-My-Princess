@@ -16,9 +16,11 @@ let isTyping = false;
 let isFinished = false;
 let previousLineTop = null;
 
-/// NATURAL, GENTLE LETTER FOLLOWING
+
+// ULTRA-SMOOTH CINEMATIC LETTER SCROLL
 
 let scrollFrame = null;
+let scrollTarget = 0;
 
 function followWriting() {
 
@@ -39,38 +41,50 @@ function followWriting() {
         return;
     }
 
-    const comfortableZone = window.innerHeight * 0.65;
-    const targetZone = window.innerHeight * 0.48;
+    const comfortableZone = window.innerHeight * 0.68;
+    const targetZone = window.innerHeight * 0.43;
 
-    // Only move when the writing approaches the lower reading area
+    // Wait until the writing approaches the lower reading area
     if (position.bottom > comfortableZone) {
 
-        if (scrollFrame) {
-            cancelAnimationFrame(scrollFrame);
+        scrollTarget =
+            window.scrollY +
+            position.top -
+            targetZone;
+
+        if (!scrollFrame) {
+            smoothScroll();
         }
-
-        scrollFrame = requestAnimationFrame(function () {
-
-            const destination =
-                window.scrollY +
-                position.top -
-                targetZone;
-
-            window.scrollTo({
-                top: Math.max(0, destination),
-                behavior: "smooth"
-            });
-
-            scrollFrame = null;
-
-        });
     }
 }
-// TYPING SPEED
 
-const normalSpeed = 75;
-const punctuationPause = 450;
-const paragraphPause = 900;
+// CONTINUOUS EASING ANIMATION
+
+function smoothScroll() {
+
+    const currentPosition = window.scrollY;
+    const difference = scrollTarget - currentPosition;
+
+    // Stop when the destination is reached
+    if (Math.abs(difference) < 0.5) {
+        window.scrollTo(0, scrollTarget);
+        scrollFrame = null;
+        return;
+    }
+
+    // Gentle acceleration and deceleration
+    const nextPosition =
+        currentPosition + difference * 0.075;
+
+    window.scrollTo(0, nextPosition);
+
+    scrollFrame = requestAnimationFrame(smoothScroll);
+}
+
+// TYPING SPEED
+const normalSpeed = 50;
+const punctuationPause = 320;
+const paragraphPause = 650;
 
 // TYPEWRITER FUNCTION
 
