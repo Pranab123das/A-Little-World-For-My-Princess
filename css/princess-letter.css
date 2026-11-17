@@ -1,0 +1,301 @@
+/* =====================================
+   A LETTER FOR MY PRINCESS
+   ROYAL PARCHMENT DESIGN
+===================================== */
+
+.letter-page {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 45px 18px 35px;
+
+    background:
+        radial-gradient(circle at 15% 15%, #ffffff 0%, transparent 35%),
+        radial-gradient(circle at 85% 85%, #f6d5e3 0%, transparent 40%),
+        linear-gradient(145deg, #fffaf5, #fce8ef, #f8e1e9);
+}
+
+/* DECORATIVE SPARKLES */
+
+.letter-sparkle {
+    position: absolute;
+    color: var(--gold);
+    opacity: 0.65;
+    animation: letterFloat 4s ease-in-out infinite;
+}
+
+.letter-sparkle.sparkle-one {
+    top: 10%;
+    left: 9%;
+    font-size: 28px;
+}
+
+.letter-sparkle.sparkle-two {
+    top: 25%;
+    right: 8%;
+    font-size: 25px;
+    animation-delay: 1s;
+}
+
+.letter-sparkle.sparkle-three {
+    bottom: 12%;
+    left: 10%;
+    font-size: 27px;
+    animation-delay: 2s;
+}
+
+@keyframes letterFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(15deg);
+        opacity: 1;
+    }
+}
+
+/* HEADING */
+
+.letter-crown {
+    color: var(--gold);
+    font-size: 43px;
+    margin-bottom: 8px;
+}
+
+.letter-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(43px, 11vw, 65px);
+    font-weight: 500;
+    line-height: 0.95;
+    text-align: center;
+    color: var(--dark-rose);
+}
+
+.letter-heading span {
+    display: block;
+    font-style: italic;
+    color: var(--deep-pink);
+    margin-top: 7px;
+}
+
+.letter-subheading {
+    margin-top: 14px;
+    margin-bottom: 28px;
+    font-size: 11px;
+    color: #a17b90;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* PARCHMENT */
+
+.parchment {
+    width: 100%;
+    max-width: 440px;
+
+    position: relative;
+
+    padding: 35px 25px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf6,
+            #fff8e9,
+            #fffaf0
+        );
+
+    border: 1px solid #e5cda6;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 12px 35px rgba(112, 76, 83, 0.12),
+        inset 0 0 25px rgba(198,155,85,0.07);
+}
+
+/* PAPER DECORATION */
+
+.parchment::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+
+    border: 1px solid rgba(198,155,85,0.35);
+
+    pointer-events: none;
+}
+
+.parchment-decoration {
+    position: relative;
+    text-align: center;
+    color: var(--gold);
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.bottom-decoration {
+    margin-top: 28px;
+    margin-bottom: 0;
+}
+
+/* LETTER CONTENT */
+
+.letter-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #a77961;
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.letter-writing-area {
+    position: relative;
+    min-height: 200px;
+}
+
+.typed-letter {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 500;
+
+    color: #765568;
+}
+
+/* TYPING CURSOR */
+
+.typing-cursor {
+    display: inline-block;
+
+    color: #c58a9e;
+    font-size: 22px;
+
+    animation: cursorBlink 0.8s steps(2, start) infinite;
+}
+
+@keyframes cursorBlink {
+    to {
+        visibility: hidden;
+    }
+}
+
+/* SIGNATURE */
+
+.letter-signature {
+    position: relative;
+
+    margin-top: 32px;
+
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+
+    color: #98748a;
+    text-align: right;
+}
+
+.letter-signature span {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 25px;
+    font-weight: 600;
+
+    color: #bd7899;
+}
+
+/* FINISH BUTTON */
+
+.finish-letter-button {
+    margin-top: 25px;
+
+    padding: 15px 23px;
+
+    border: 1px solid #d8b47b;
+    border-radius: 40px;
+
+    background: linear-gradient(
+        135deg,
+        #d98eae,
+        #e8a9c1
+    );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+
+    box-shadow: 0 8px 22px rgba(195,119,151,0.25);
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.finish-letter-button:hover {
+    transform: translateY(-3px);
+}
+
+.finish-letter-button:active {
+    transform: scale(0.96);
+}
+
+.finish-letter-button:disabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+/* FOOTER */
+
+.letter-footer {
+    margin-top: 25px;
+
+    font-size: 8px;
+    letter-spacing: 2px;
+
+    color: #bd98a9;
+    text-align: center;
+}
+
+/* MOBILE */
+
+@media (max-width: 380px) {
+    .parchment {
+        padding: 30px 19px 25px;
+    }
+
+    .typed-letter {
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .letter-page {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+    .letter-sparkle,
+    .typing-cursor {
+        animation: none;
+    }
+}
