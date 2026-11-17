@@ -1,6 +1,7 @@
+
 /* =====================================
    A LETTER FOR MY PRINCESS
-   SLOW TYPEWRITER EFFECT
+   TYPEWRITER + SMOOTH SCROLL
 ===================================== */
 
 const letterSource = document.getElementById("letterSource");
@@ -14,22 +15,42 @@ let currentIndex = 0;
 let typingTimer = null;
 let isTyping = false;
 let isFinished = false;
-let previousLineTop = null;
 
 
-// ULTRA-SMOOTH CINEMATIC LETTER SCROLL
+// =====================================
+// TYPING SPEED
+// =====================================
+
+const normalSpeed = 50;
+const punctuationPause = 320;
+const paragraphPause = 650;
+
+
+// =====================================
+// SMOOTH SCROLL CONTROL
+// =====================================
 
 let scrollFrame = null;
 let scrollTarget = 0;
-let userIsScrolling = false;
-let userScrollTimeout = null;
+
+// Once the reader manually scrolls,
+// automatic following stays disabled.
+let userHasTakenControl = false;
+
+
+// =====================================
 // RESPECT MANUAL READER SCROLLING
+// =====================================
 
-window.addEventListener("wheel", stopAutoScroll, { passive: true });
-window.addEventListener("touchstart", stopAutoScroll, { passive: true });
-window.addEventListener("touchmove", stopAutoScroll, { passive: true });
+window.addEventListener("wheel", stopAutoScroll, {
+    passive: true
+});
 
-window.addEventListener("keydown", function (event) {
+window.addEventListener("touchmove", stopAutoScroll, {
+    passive: true
+});
+
+window.addEventListener("keydown", function(event) {
 
     const scrollKeys = [
         "ArrowUp",
@@ -49,22 +70,25 @@ window.addEventListener("keydown", function (event) {
 
 function stopAutoScroll() {
 
-    userIsScrolling = true;
+    userHasTakenControl = true;
 
-    if (scrollFrame) {
+    if (scrollFrame !== null) {
         cancelAnimationFrame(scrollFrame);
         scrollFrame = null;
     }
 
-    clearTimeout(userScrollTimeout);
-
-    userScrollTimeout = setTimeout(function () {
-        userIsScrolling = false;
-    }, 1200);
-
 }
 
+
+// =====================================
+// FOLLOW THE WRITING NATURALLY
+// =====================================
+
 function followWriting() {
+
+    if (userHasTakenControl || isFinished) {
+        return;
+    }
 
     const textNode = letterOutput.firstChild;
 
@@ -86,39 +110,44 @@ function followWriting() {
     const comfortableZone = window.innerHeight * 0.68;
     const targetZone = window.innerHeight * 0.43;
 
-    // Wait until the writing approaches the lower reading area
-    if (!userIsScrolling && position.bottom > comfortableZone) {
+    if (position.bottom > comfortableZone) {
 
         scrollTarget =
             window.scrollY +
             position.top -
             targetZone;
 
-        if (!scrollFrame) {
+        if (scrollFrame === null) {
             smoothScroll();
         }
     }
 }
 
-// CONTINUOUS EASING ANIMATION
-if (userIsScrolling) {
-    scrollFrame = null;
-    return;
-}
+
+// =====================================
+// CONTINUOUS CINEMATIC SCROLL
+// =====================================
 
 function smoothScroll() {
 
-    const currentPosition = window.scrollY;
-    const difference = scrollTarget - currentPosition;
-
-    // Stop when the destination is reached
-    if (Math.abs(difference) < 0.5) {
-        window.scrollTo(0, scrollTarget);
+    // Stop immediately if the reader takes control
+    if (userHasTakenControl || isFinished) {
         scrollFrame = null;
         return;
     }
 
-    // Gentle acceleration and deceleration
+    const currentPosition = window.scrollY;
+    const difference = scrollTarget - currentPosition;
+
+    if (Math.abs(difference) < 0.5) {
+
+        window.scrollTo(0, scrollTarget);
+
+        scrollFrame = null;
+        return;
+    }
+
+    // Gentle continuous movement
     const nextPosition =
         currentPosition + difference * 0.075;
 
@@ -127,12 +156,10 @@ function smoothScroll() {
     scrollFrame = requestAnimationFrame(smoothScroll);
 }
 
-// TYPING SPEED
-const normalSpeed = 50;
-const punctuationPause = 320;
-const paragraphPause = 650;
 
+// =====================================
 // TYPEWRITER FUNCTION
+// =====================================
 
 function typeLetter() {
 
@@ -149,15 +176,20 @@ function typeLetter() {
 
     currentIndex++;
 
-// Keep the newest writing line near the screen centre
-followWriting();
+    // Follow the newest writing naturally
+    followWriting();
+
     let nextDelay = normalSpeed;
 
     if (character === "," || character === ";") {
         nextDelay = punctuationPause;
     }
 
-    if (character === "." || character === "!" || character === "?") {
+    if (
+        character === "." ||
+        character === "!" ||
+        character === "?"
+    ) {
         nextDelay = punctuationPause + 200;
     }
 
@@ -168,11 +200,19 @@ followWriting();
     typingTimer = setTimeout(typeLetter, nextDelay);
 }
 
+
+// =====================================
 // FINISH TYPING
+// =====================================
 
 function finishTyping() {
 
     clearTimeout(typingTimer);
+
+    if (scrollFrame !== null) {
+        cancelAnimationFrame(scrollFrame);
+        scrollFrame = null;
+    }
 
     letterOutput.textContent = fullLetter;
 
@@ -187,9 +227,12 @@ function finishTyping() {
     finishButton.disabled = true;
 }
 
-// FINISH BUTTON
 
-finishButton.addEventListener("click", function () {
+// =====================================
+// FINISH BUTTON
+// =====================================
+
+finishButton.addEventListener("click", function() {
 
     if (!isFinished) {
         finishTyping();
@@ -197,11 +240,14 @@ finishButton.addEventListener("click", function () {
 
 });
 
+
+// =====================================
 // START AUTOMATIC TYPING
+// =====================================
 
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
 
-    setTimeout(function () {
+    setTimeout(function() {
         typeLetter();
     }, 1200);
 
