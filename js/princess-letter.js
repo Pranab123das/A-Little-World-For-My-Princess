@@ -14,7 +14,48 @@ let currentIndex = 0;
 let typingTimer = null;
 let isTyping = false;
 let isFinished = false;
+let previousLineTop = null;
 
+// AUTOMATICALLY CENTRE THE LATEST WRITING LINE
+
+function followWriting() {
+
+    const textNode = letterOutput.firstChild;
+
+    if (!textNode || currentIndex === 0) {
+        return;
+    }
+
+    const range = document.createRange();
+
+    range.setStart(textNode, currentIndex - 1);
+    range.setEnd(textNode, currentIndex);
+
+    const position = range.getBoundingClientRect();
+
+    if (!position.height) {
+        return;
+    }
+
+    // Scroll only when a new visual line begins
+    if (
+        previousLineTop === null ||
+        Math.abs(position.top - previousLineTop) > 3
+    ) {
+
+        previousLineTop = position.top;
+
+        const targetPosition =
+            window.scrollY +
+            position.top -
+            (window.innerHeight * 0.45);
+
+        window.scrollTo({
+            top: Math.max(0, targetPosition),
+            behavior: "smooth"
+        });
+    }
+}
 // TYPING SPEED
 
 const normalSpeed = 75;
@@ -38,12 +79,8 @@ function typeLetter() {
 
     currentIndex++;
 
-    // Scroll naturally as the letter grows
-    letterOutput.scrollIntoView({
-        behavior: "smooth",
-        block: "end"
-    });
-
+// Keep the newest writing line near the screen centre
+followWriting();
     let nextDelay = normalSpeed;
 
     if (character === "," || character === ";") {
