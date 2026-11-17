@@ -1,0 +1,289 @@
+
+/* =====================================
+   A LITTLE WORLD FOR MY PRINCESS
+   ROYAL PINK THEME
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --pink: #f5c6d7;
+    --deep-pink: #d98eae;
+    --soft-pink: #fff0f5;
+    --ivory: #fffaf5;
+    --gold: #c69b55;
+    --dark-rose: #89536d;
+    --text: #765568;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, #ffffff 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #f9d9e6 0%, transparent 40%),
+        linear-gradient(145deg, #fff8f8, #fce5ed, #fff4e9);
+
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+.entrance-page {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 45px 22px 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* DECORATIVE SPARKLES */
+
+.sparkle {
+    position: absolute;
+    color: var(--gold);
+    opacity: 0.65;
+    animation: sparkleFloat 4s ease-in-out infinite;
+}
+
+.sparkle-one {
+    top: 12%;
+    left: 12%;
+    font-size: 28px;
+}
+
+.sparkle-two {
+    top: 22%;
+    right: 13%;
+    font-size: 23px;
+    animation-delay: 1s;
+}
+
+.sparkle-three {
+    bottom: 23%;
+    left: 9%;
+    font-size: 30px;
+    animation-delay: 2s;
+}
+
+.sparkle-four {
+    bottom: 17%;
+    right: 12%;
+    font-size: 25px;
+    animation-delay: 0.5s;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-13px) rotate(15deg);
+        opacity: 1;
+    }
+}
+
+/* ROYAL CROWN */
+
+.crown-decoration {
+    color: var(--gold);
+    font-size: 47px;
+    margin-bottom: 13px;
+    animation: crownGlow 3s ease-in-out infinite;
+}
+
+@keyframes crownGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(198,155,85,0.1);
+    }
+
+    50% {
+        text-shadow: 0 0 18px rgba(198,155,85,0.5);
+    }
+}
+
+/* TEXT */
+
+.royal-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.main-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 12vw, 76px);
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--dark-rose);
+}
+
+.main-heading span {
+    display: block;
+    font-style: italic;
+    color: var(--deep-pink);
+    margin-top: 8px;
+}
+
+.title-divider {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    color: var(--gold);
+    margin: 24px 0;
+    font-size: 19px;
+}
+
+.title-divider span {
+    width: 43px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.princess-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 600;
+    color: var(--dark-rose);
+    margin-bottom: 12px;
+}
+
+.welcome-text {
+    max-width: 310px;
+    font-size: 12px;
+    line-height: 2;
+    font-weight: 300;
+    color: #98798b;
+}
+
+/* ROYAL ILLUSTRATION */
+
+.royal-illustration {
+    position: relative;
+    margin: 25px 0 30px;
+    width: 105px;
+    height: 85px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.crown {
+    font-size: 72px;
+    color: var(--gold);
+    text-shadow: 0 5px 15px rgba(198,155,85,0.2);
+}
+
+.heart {
+    position: absolute;
+    color: #e49ab8;
+    font-size: 22px;
+    bottom: 0;
+    right: 2px;
+    animation: heartBeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* ENTRANCE BUTTON */
+
+.enter-button {
+    border: 1px solid #d8b47b;
+    background: linear-gradient(135deg, #d98eae, #e8a9c1);
+    color: white;
+
+    padding: 16px 27px;
+    border-radius: 40px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    box-shadow: 0 8px 25px rgba(195, 119, 151, 0.25);
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.enter-button span {
+    margin-left: 8px;
+    font-size: 15px;
+}
+
+.enter-button:active {
+    transform: scale(0.96);
+}
+
+.enter-button:hover {
+    box-shadow: 0 10px 30px rgba(195, 119, 151, 0.4);
+    transform: translateY(-3px);
+}
+
+.button-caption {
+    font-size: 10px;
+    color: #aa879a;
+    margin-top: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* FOOTER */
+
+.entrance-footer {
+    position: absolute;
+    bottom: 18px;
+
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #bd98a9;
+}
+
+@media (max-height: 700px) {
+    .entrance-page {
+        padding-top: 25px;
+        padding-bottom: 45px;
+    }
+
+    .crown-decoration {
+        font-size: 36px;
+        margin-bottom: 8px;
+    }
+
+    .royal-illustration {
+        margin: 15px 0 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
