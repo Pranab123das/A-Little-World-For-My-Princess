@@ -2,6 +2,7 @@
    A LETTER FOR MY PRINCESS
    ROYAL PARCHMENT DESIGN
 ===================================== */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap');
 
 .letter-page {
     min-height: 100vh;
@@ -169,8 +170,8 @@
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
     line-height: 1.85;
     font-weight: 500;
 
@@ -305,9 +306,8 @@
 
 html {
     overflow-y: auto;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
-
 body {
     overflow-x: hidden;
     overflow-y: auto;
