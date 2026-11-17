@@ -101,6 +101,10 @@ function followWriting() {
 }
 
 // CONTINUOUS EASING ANIMATION
+if (userIsScrolling) {
+    scrollFrame = null;
+    return;
+}
 
 function smoothScroll() {
 
