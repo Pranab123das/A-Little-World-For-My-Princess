@@ -8,6 +8,9 @@ const letterSource = document.getElementById("letterSource");
 const letterOutput = document.getElementById("letterOutput");
 const typingCursor = document.getElementById("typingCursor");
 const finishButton = document.getElementById("finishLetter");
+const nextSurprisesButton = document.getElementById("nextSurprises");
+
+nextSurprisesButton.style.display = "none";
 
 // Check that all required HTML elements exist
 if (!letterSource || !letterOutput || !typingCursor || !finishButton) {
@@ -213,6 +216,8 @@ if (!letterSource || !letterOutput || !typingCursor || !finishButton) {
 
         finishButton.textContent = "MY LETTER IS ALL YOURS ♡";
         finishButton.disabled = true;
+       nextSurprisesButton.hidden = false;
+nextSurprisesButton.style.removeProperty("display");
     }
 
     // =====================================
@@ -226,6 +231,15 @@ if (!letterSource || !letterOutput || !typingCursor || !finishButton) {
         }
 
     });
+   // =====================================
+// GO TO THE SURPRISE ROOM
+// =====================================
+
+nextSurprisesButton.addEventListener("click", function() {
+
+    window.location.href = "little-surprises.html";
+
+});
 
     // =====================================
     // START AUTOMATIC TYPING
