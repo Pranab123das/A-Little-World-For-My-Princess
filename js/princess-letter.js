@@ -21,6 +21,48 @@ let previousLineTop = null;
 
 let scrollFrame = null;
 let scrollTarget = 0;
+let userIsScrolling = false;
+let userScrollTimeout = null;
+// RESPECT MANUAL READER SCROLLING
+
+window.addEventListener("wheel", stopAutoScroll, { passive: true });
+window.addEventListener("touchstart", stopAutoScroll, { passive: true });
+window.addEventListener("touchmove", stopAutoScroll, { passive: true });
+
+window.addEventListener("keydown", function (event) {
+
+    const scrollKeys = [
+        "ArrowUp",
+        "ArrowDown",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End",
+        " "
+    ];
+
+    if (scrollKeys.includes(event.key)) {
+        stopAutoScroll();
+    }
+
+});
+
+function stopAutoScroll() {
+
+    userIsScrolling = true;
+
+    if (scrollFrame) {
+        cancelAnimationFrame(scrollFrame);
+        scrollFrame = null;
+    }
+
+    clearTimeout(userScrollTimeout);
+
+    userScrollTimeout = setTimeout(function () {
+        userIsScrolling = false;
+    }, 1200);
+
+}
 
 function followWriting() {
 
@@ -45,7 +87,7 @@ function followWriting() {
     const targetZone = window.innerHeight * 0.43;
 
     // Wait until the writing approaches the lower reading area
-    if (position.bottom > comfortableZone) {
+    if (!userIsScrolling && position.bottom > comfortableZone) {
 
         scrollTarget =
             window.scrollY +
