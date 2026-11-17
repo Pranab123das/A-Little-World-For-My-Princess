@@ -16,7 +16,9 @@ let isTyping = false;
 let isFinished = false;
 let previousLineTop = null;
 
-// AUTOMATICALLY CENTRE THE LATEST WRITING LINE
+/// NATURAL, GENTLE LETTER FOLLOWING
+
+let scrollFrame = null;
 
 function followWriting() {
 
@@ -37,22 +39,30 @@ function followWriting() {
         return;
     }
 
-    // Scroll only when a new visual line begins
-    if (
-        previousLineTop === null ||
-        Math.abs(position.top - previousLineTop) > 3
-    ) {
+    const comfortableZone = window.innerHeight * 0.65;
+    const targetZone = window.innerHeight * 0.48;
 
-        previousLineTop = position.top;
+    // Only move when the writing approaches the lower reading area
+    if (position.bottom > comfortableZone) {
 
-        const targetPosition =
-            window.scrollY +
-            position.top -
-            (window.innerHeight * 0.45);
+        if (scrollFrame) {
+            cancelAnimationFrame(scrollFrame);
+        }
 
-        window.scrollTo({
-            top: Math.max(0, targetPosition),
-            behavior: "smooth"
+        scrollFrame = requestAnimationFrame(function () {
+
+            const destination =
+                window.scrollY +
+                position.top -
+                targetZone;
+
+            window.scrollTo({
+                top: Math.max(0, destination),
+                behavior: "smooth"
+            });
+
+            scrollFrame = null;
+
         });
     }
 }
