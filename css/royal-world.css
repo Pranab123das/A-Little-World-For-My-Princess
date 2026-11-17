@@ -1,0 +1,276 @@
+/* =====================================
+   HER LITTLE KINGDOM
+   ROYAL WORLD STYLING
+===================================== */
+
+.kingdom-page {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 45px 24px 35px;
+
+    background:
+        radial-gradient(circle at 50% 15%, #ffffff 0%, transparent 35%),
+        linear-gradient(145deg, #fffaf5, #fce5ed, #f8dce9);
+}
+
+/* SPARKLES */
+
+.kingdom-sparkle {
+    position: absolute;
+    color: var(--gold);
+    opacity: 0.7;
+    animation: kingdomFloat 4s ease-in-out infinite;
+}
+
+.kingdom-sparkle.sparkle-one {
+    top: 12%;
+    left: 10%;
+    font-size: 28px;
+}
+
+.kingdom-sparkle.sparkle-two {
+    top: 20%;
+    right: 12%;
+    font-size: 24px;
+    animation-delay: 1s;
+}
+
+.kingdom-sparkle.sparkle-three {
+    bottom: 19%;
+    left: 9%;
+    font-size: 29px;
+    animation-delay: 2s;
+}
+
+.kingdom-sparkle.sparkle-four {
+    bottom: 13%;
+    right: 11%;
+    font-size: 25px;
+    animation-delay: 0.5s;
+}
+
+@keyframes kingdomFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-13px) rotate(15deg);
+        opacity: 1;
+    }
+}
+
+/* CROWN */
+
+.kingdom-crown {
+    font-size: 58px;
+    color: var(--gold);
+    margin-bottom: 12px;
+
+    animation: royalGlow 3s ease-in-out infinite;
+}
+
+@keyframes royalGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(198,155,85,0.1);
+    }
+
+    50% {
+        text-shadow: 0 0 22px rgba(198,155,85,0.5);
+    }
+}
+
+/* HEADINGS */
+
+.kingdom-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 12vw, 70px);
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--dark-rose);
+}
+
+.kingdom-heading span {
+    display: block;
+    font-style: italic;
+    color: var(--deep-pink);
+    margin-top: 8px;
+}
+
+.kingdom-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--dark-rose);
+    margin-bottom: 22px;
+}
+
+/* MESSAGE */
+
+.royal-message {
+    max-width: 330px;
+    position: relative;
+
+    padding: 24px 20px;
+
+    border-top: 1px solid rgba(198,155,85,0.55);
+    border-bottom: 1px solid rgba(198,155,85,0.55);
+
+    background: rgba(255,255,255,0.35);
+}
+
+.royal-message p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.65;
+    font-weight: 500;
+    color: #805b70;
+}
+
+.message-ornament {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    color: var(--gold);
+    line-height: 0.8;
+}
+
+.message-ornament.closing {
+    text-align: right;
+    margin-top: 8px;
+}
+
+/* HEART */
+
+.kingdom-heart {
+    color: #dc91b1;
+    font-size: 38px;
+    margin: 17px 0 8px;
+
+    animation: kingdomHeartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes kingdomHeartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+.kingdom-caption {
+    font-size: 11px;
+    color: #a17b90;
+    letter-spacing: 0.3px;
+    margin-bottom: 27px;
+}
+
+/* LETTER BUTTON */
+
+.letter-button {
+    border: 1px solid #d8b47b;
+
+    background: linear-gradient(
+        135deg,
+        #d98eae,
+        #e8a9c1
+    );
+
+    color: white;
+
+    padding: 16px 25px;
+    border-radius: 40px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+
+    box-shadow: 0 8px 25px rgba(195,119,151,0.25);
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.letter-button span {
+    margin-left: 8px;
+    font-size: 15px;
+}
+
+.letter-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(195,119,151,0.4);
+}
+
+.letter-button:active {
+    transform: scale(0.96);
+}
+
+.letter-button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* FOOTER */
+
+.kingdom-footer {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #bd98a9;
+    margin-top: 27px;
+}
+
+/* SMALL SCREENS */
+
+@media (max-height: 700px) {
+    .kingdom-page {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    .kingdom-crown {
+        font-size: 42px;
+        margin-bottom: 7px;
+    }
+
+    .kingdom-name {
+        margin-bottom: 14px;
+    }
+
+    .royal-message {
+        padding: 15px 18px;
+    }
+
+    .royal-message p {
+        font-size: 19px;
+    }
+
+    .kingdom-heart {
+        margin: 10px 0 5px;
+    }
+
+    .kingdom-caption {
+        margin-bottom: 17px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kingdom-sparkle,
+    .kingdom-crown,
+    .kingdom-heart {
+        animation: none;
+    }
+}
