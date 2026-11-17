@@ -8,7 +8,7 @@
     min-height: 100svh;
 
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 
     display: flex;
     flex-direction: column;
@@ -291,6 +291,7 @@
     }
 }
 
+
 /* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
@@ -298,4 +299,20 @@
     .typing-cursor {
         animation: none;
     }
+}
+
+/* NATURAL PAGE SCROLLING */
+
+html {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.letter-page {
+    overflow: visible;
 }
