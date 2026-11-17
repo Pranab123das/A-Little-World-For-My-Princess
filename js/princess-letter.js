@@ -10,10 +10,15 @@ const typingCursor = document.getElementById("typingCursor");
 const finishButton = document.getElementById("finishLetter");
 const nextSurprisesButton = document.getElementById("nextSurprises");
 
-nextSurprisesButton.style.display = "none";
 
 // Check that all required HTML elements exist
-if (!letterSource || !letterOutput || !typingCursor || !finishButton) {
+if (
+    !letterSource ||
+    !letterOutput ||
+    !typingCursor ||
+    !finishButton ||
+    !nextSurprisesButton
+) {
     console.error("Princess Letter: One or more required HTML elements are missing.");
 } else {
 
