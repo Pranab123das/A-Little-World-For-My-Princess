@@ -138,9 +138,9 @@ kissButton.addEventListener("click", function() {
         "One on your forehead...\n" +
         "Two on your cheeks...\n" +
        "Lotssiee on ur lippsiess...\n" +
-        "And approximately 696969 on every inch of ur body!\n" +
+        "And approximately 696969 kissiess on every inch of ur body!\n" +
        "Hehehe! All reserved for my Kuchuuu. ♡ \n"  +
-      "And ofc all your wetness deserves to be kissed 😋" ;
+      "And ofc all your wetness deserves to be kissed with love 😋" ;
 
     kissMessage.classList.add("show");
 
