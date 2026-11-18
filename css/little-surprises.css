@@ -1,7 +1,7 @@
 
 /* =====================================
    LITTLE SURPRISES FOR MY PRINCESS
-   THE ROYAL LOVE LETTER COLLECTION
+   ROYAL TREASURE ROOM
 ===================================== */
 
 .surprises-page {
@@ -14,13 +14,13 @@
     flex-direction: column;
     align-items: center;
 
-    padding: 48px 20px 38px;
+    padding: 45px 20px 35px;
 
     background:
-        radial-gradient(ellipse at 50% 0%, #fffefa 0%, transparent 45%),
-        radial-gradient(circle at 0% 40%, #f5dce6 0%, transparent 38%),
-        radial-gradient(circle at 100% 75%, #f1d8e2 0%, transparent 38%),
-        linear-gradient(145deg, #fff9f4, #f9e9ed, #fff4ed);
+        radial-gradient(ellipse at 50% 5%, #ffffff 0%, transparent 48%),
+        radial-gradient(circle at 0% 45%, #f6d6e5 0%, transparent 35%),
+        radial-gradient(circle at 100% 75%, #f5d9e5 0%, transparent 35%),
+        linear-gradient(145deg, #fff8f5, #fbe6ee, #fff3ed);
 
     color: #765568;
     text-align: center;
@@ -32,24 +32,22 @@
 
 .surprises-page::before,
 .surprises-page::after {
-    content: "❧";
+    content: "✧";
     position: absolute;
-    color: #c8a46d;
-    opacity: 0.25;
-    font-size: 105px;
+    color: #d5ad70;
+    opacity: 0.35;
+    font-size: 110px;
     pointer-events: none;
 }
 
 .surprises-page::before {
-    top: 190px;
-    left: -40px;
-    transform: rotate(-35deg);
+    top: 180px;
+    left: -38px;
 }
 
 .surprises-page::after {
-    top: 530px;
-    right: -40px;
-    transform: rotate(145deg);
+    top: 470px;
+    right: -38px;
 }
 
 .surprises-crown {
@@ -61,8 +59,13 @@
 }
 
 @keyframes crownFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-7px); }
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
 }
 
 .surprise-sparkle {
@@ -109,9 +112,9 @@
 .royal-label {
     font-family: 'Poppins', sans-serif;
     font-size: 9px;
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
     font-weight: 500;
-    color: #ae8a70;
+    color: #b18a72;
 }
 
 .surprises-heading {
@@ -120,13 +123,13 @@
     line-height: 1.05;
     font-weight: 600;
     margin: 15px 0;
-    color: #92647c;
+    color: #98647e;
     text-shadow: 0 3px 15px rgba(189, 130, 159, 0.12);
 }
 
 .surprises-heading span {
     display: block;
-    color: #bd829e;
+    color: #c17f9e;
     font-style: italic;
 }
 
@@ -135,12 +138,12 @@
     font-size: 12px;
     line-height: 1.9;
     max-width: 340px;
-    margin: 8px auto 40px;
-    color: #96788a;
+    margin: 8px auto 38px;
+    color: #98788c;
 }
 
 /* =====================================
-   LETTER COLLECTION
+   GIFT COLLECTION
 ===================================== */
 
 .surprise-gifts {
@@ -149,63 +152,59 @@
 
     display: flex;
     flex-direction: column;
-    gap: 29px;
+    gap: 25px;
 }
 
 /* =====================================
-   INDIVIDUAL LOVE LETTERS
+   INDIVIDUAL TREASURE BOXES
 ===================================== */
 
 .surprise-gift {
     position: relative;
 
-    padding: 35px 23px 30px;
+    padding: 32px 21px 27px;
 
-    border: 1px solid #d9c5a5;
-    border-radius: 5px;
+    border: 1px solid #e4c4d1;
+    border-radius: 22px;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,252,0.98),
-            rgba(255,249,244,0.97),
-            rgba(255,252,249,0.98)
-        );
+        linear-gradient(145deg,
+            rgba(255,255,255,0.96),
+            rgba(255,247,249,0.91));
 
     box-shadow:
-        0 12px 30px rgba(126, 83, 105, 0.09),
+        0 12px 30px rgba(146, 93, 120, 0.10),
         0 3px 8px rgba(255,255,255,0.9),
-        inset 0 0 25px rgba(205, 174, 130, 0.07);
+        inset 0 0 0 5px rgba(255,255,255,0.45);
+
+    backdrop-filter: blur(10px);
 
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
-/* INNER GOLDEN FRAME */
+/* GOLDEN INNER BORDER */
 
 .surprise-gift::before {
     content: "";
     position: absolute;
     inset: 8px;
-
-    border: 1px solid rgba(193, 157, 103, 0.38);
-    border-radius: 3px;
-
+    border: 1px solid rgba(205, 164, 94, 0.30);
+    border-radius: 16px;
     pointer-events: none;
 }
 
-/* LITTLE ROYAL CORNER ORNAMENT */
+/* DECORATIVE TOP ORNAMENT */
 
 .surprise-gift::after {
     content: "✧";
     position: absolute;
-    top: 14px;
+    top: 13px;
     right: 17px;
-
-    font-size: 20px;
-    color: #c6a16b;
-    opacity: 0.85;
+    font-size: 18px;
+    color: #d1ad72;
+    opacity: 0.8;
 }
 
 .surprise-gift:active {
@@ -213,108 +212,108 @@
 }
 
 /* =====================================
-   LETTER EMBLEMS
+   GIFT ICONS
 ===================================== */
 
 .gift-icon {
-    width: 88px;
-    height: 88px;
+    width: 82px;
+    height: 82px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin: 0 auto 20px;
+    margin: 0 auto 17px;
 
     font-size: 43px;
 
     border-radius: 50%;
 
     background:
-        radial-gradient(circle, #fffefa 0%, #fff4f5 72%, #f4e1e6 100%);
+        radial-gradient(circle, #fff 0%, #fff3f7 70%, #f8dce8 100%);
 
-    border: 1px solid #dfc9cf;
+    border: 1px solid #e8c8d5;
 
     box-shadow:
-        0 7px 18px rgba(157, 106, 129, 0.12),
-        inset 0 0 13px rgba(255,255,255,0.95);
+        0 6px 18px rgba(189, 130, 159, 0.17),
+        inset 0 0 12px rgba(255,255,255,0.9);
 }
 
+/* INDIVIDUAL GIFT COLORS */
+
 #reminderGift .gift-icon {
-    background: radial-gradient(circle, #fffefa, #fff0f2);
+    background: radial-gradient(circle, #fff, #fff0f3);
 }
 
 #hugGift .gift-icon {
-    background: radial-gradient(circle, #fffefa, #f8e9e9);
+    background: radial-gradient(circle, #fff, #fce8ed);
 }
 
 #kissGift .gift-icon {
-    background: radial-gradient(circle, #fffefa, #fbe5ec);
+    background: radial-gradient(circle, #fff, #ffe6ef);
 }
 
 /* =====================================
-   LETTER TITLES AND DESCRIPTIONS
+   GIFT TITLES AND DESCRIPTIONS
 ===================================== */
 
 .surprise-gift h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 34px;
-    line-height: 1.15;
+    font-size: 31px;
     font-weight: 600;
-    color: #93647b;
-    margin: 7px 0 10px;
+    color: #98647e;
+    margin: 5px 0 9px;
 }
 
 .surprise-gift p {
     font-family: 'Poppins', sans-serif;
     font-size: 11px;
-    line-height: 1.9;
-    margin: 0 auto 23px;
-    color: #92798a;
+    line-height: 1.8;
+    margin: 0 auto 21px;
+    color: #98788c;
 }
 
 /* =====================================
-   ROSE GOLD LETTER BUTTONS
+   ROYAL BUTTONS
 ===================================== */
 
 .surprise-gift button {
     position: relative;
     z-index: 1;
 
-    border: 1px solid #d7b98b;
-    border-radius: 3px;
+    border: 1px solid #e0c18e;
+    border-radius: 35px;
 
-    padding: 15px 25px;
+    padding: 14px 24px;
 
     background:
-        linear-gradient(135deg, #c58ba5, #a96f8c);
+        linear-gradient(135deg, #d99ab5, #b77798);
 
-    color: #fffdfb;
+    color: white;
 
     font-family: 'Poppins', sans-serif;
     font-size: 10px;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.3px;
 
     box-shadow:
-        0 6px 16px rgba(151, 94, 125, 0.18),
+        0 6px 17px rgba(168, 110, 144, 0.23),
         inset 0 1px 2px rgba(255,255,255,0.35);
 
     cursor: pointer;
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+        box-shadow 0.25s ease;
 }
 
 .surprise-gift button:active {
     transform: scale(0.94);
-    box-shadow: 0 3px 8px rgba(151, 94, 125, 0.18);
+    box-shadow: 0 3px 8px rgba(168, 110, 144, 0.2);
 }
 
 /* =====================================
-   OPENED LETTER / PARCHMENT REVEAL
+   ANTIQUE ROYAL PARCHMENT SCROLL
 ===================================== */
 
 .gift-reveal {
@@ -322,47 +321,144 @@
 
     position: relative;
 
-    margin-top: 25px;
-    padding: 25px 19px;
+    margin: 32px 7px 15px;
+    padding: 45px 23px 43px;
 
-    border: 1px solid #ddc8a7;
-    border-radius: 3px;
+    /*
+       AGED IVORY PARCHMENT
+       WITH DARKENED ROLLED ENDS
+    */
 
     background:
-        radial-gradient(ellipse at top, #fffef9, transparent 75%),
-        linear-gradient(135deg, #fffaf0, #fff5e9, #fffaf3);
+        /* Top rolled edge */
+        linear-gradient(
+            to bottom,
+            #b89a6e 0px,
+            #e2c99e 5px,
+            #fff0d0 13px,
+            transparent 25px
+        ) top / 100% 25px no-repeat,
 
-    color: #795d70;
+        /* Bottom rolled edge */
+        linear-gradient(
+            to top,
+            #b89a6e 0px,
+            #e2c99e 5px,
+            #fff0d0 13px,
+            transparent 25px
+        ) bottom / 100% 25px no-repeat,
+
+        /* Aged paper texture */
+        radial-gradient(
+            ellipse at 15% 20%,
+            rgba(177, 132, 77, 0.12),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            ellipse at 85% 75%,
+            rgba(177, 132, 77, 0.12),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            100deg,
+            #ead7b5 0%,
+            #fff5dc 5%,
+            #f8e9c9 50%,
+            #fff5dc 95%,
+            #ddc49a 100%
+        );
+
+    color: #75566a;
 
     font-family: 'Cormorant Garamond', serif;
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.85;
     font-weight: 500;
 
     white-space: pre-line;
     text-align: center;
 
+    border: none;
+
+    /*
+       HAND-CUT IRREGULAR SIDES
+       TOP AND BOTTOM REMAIN STRAIGHT
+    */
+
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+
+        98% 4%,
+        100% 9%,
+        98% 14%,
+        100% 19%,
+        98% 24%,
+        100% 29%,
+        98% 34%,
+        100% 39%,
+        98% 44%,
+        100% 49%,
+        98% 54%,
+        100% 59%,
+        98% 64%,
+        100% 69%,
+        98% 74%,
+        100% 79%,
+        98% 84%,
+        100% 89%,
+        98% 94%,
+        100% 100%,
+
+        0% 100%,
+
+        2% 94%,
+        0% 89%,
+        2% 84%,
+        0% 79%,
+        2% 74%,
+        0% 69%,
+        2% 64%,
+        0% 59%,
+        2% 54%,
+        0% 49%,
+        2% 44%,
+        0% 39%,
+        2% 34%,
+        0% 29%,
+        2% 24%,
+        0% 19%,
+        2% 14%,
+        0% 9%,
+        2% 4%
+    );
+
     box-shadow:
-        inset 0 0 20px rgba(198,155,85,0.08),
-        0 5px 15px rgba(112,76,83,0.06);
+        inset 0 0 25px rgba(115, 78, 44, 0.12),
+        0 8px 18px rgba(111, 77, 51, 0.10);
 }
 
-/* SMALL LETTER SEPARATOR */
+/* ORNAMENTAL LETTER SEPARATOR */
 
 .gift-reveal::before {
     content: "❧  ♡  ❧";
+
     display: block;
 
-    margin-bottom: 16px;
+    margin-bottom: 19px;
 
-    color: #bd9a6b;
-    font-size: 17px;
+    color: #aa8351;
+    font-size: 19px;
     letter-spacing: 5px;
 }
 
+/* OPENING ANIMATION */
+
 .gift-reveal.show {
     display: block;
-    animation: revealGift 0.65s ease both;
+    animation: revealGift 0.75s ease both;
 }
 
 @keyframes revealGift {
@@ -382,14 +478,14 @@
 ===================================== */
 
 .surprises-footer {
-    margin-top: 46px;
+    margin-top: 43px;
 
     font-family: 'Poppins', sans-serif;
     font-size: 9px;
     letter-spacing: 2px;
-    line-height: 2.3;
+    line-height: 2.2;
 
-    color: #ad896f;
+    color: #b18a72;
 }
 
 /* =====================================
@@ -481,20 +577,19 @@
     }
 
     .surprise-gift {
-        padding: 29px 17px;
+        padding: 27px 16px;
     }
 
     .surprises-heading {
         font-size: 37px;
     }
 
-    .surprise-gift h2 {
-        font-size: 31px;
-    }
-
     .gift-reveal {
-        padding: 21px 13px;
+        margin-left: 3px;
+        margin-right: 3px;
+        padding: 39px 16px 37px;
         font-size: 18px;
+        line-height: 1.8;
     }
 }
 
