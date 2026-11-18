@@ -1,6 +1,7 @@
 
 /* =====================================
    LITTLE SURPRISES FOR MY PRINCESS
+   ROYAL TREASURE ROOM
 ===================================== */
 
 .surprises-page {
@@ -8,31 +9,68 @@
     min-height: 100svh;
     position: relative;
     overflow: hidden;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     padding: 45px 20px 35px;
+
     background:
-        radial-gradient(circle at top, #fff8fc, transparent 55%),
-        linear-gradient(145deg, #fff0f5, #fce4ef, #fff8f4);
+        radial-gradient(ellipse at 50% 5%, #ffffff 0%, transparent 48%),
+        radial-gradient(circle at 0% 45%, #f6d6e5 0%, transparent 35%),
+        radial-gradient(circle at 100% 75%, #f5d9e5 0%, transparent 35%),
+        linear-gradient(145deg, #fff8f5, #fbe6ee, #fff3ed);
+
     color: #765568;
     text-align: center;
 }
 
 /* =====================================
-   DECORATIONS
+   ROYAL DECORATIONS
 ===================================== */
 
+.surprises-page::before,
+.surprises-page::after {
+    content: "✧";
+    position: absolute;
+    color: #d5ad70;
+    opacity: 0.35;
+    font-size: 110px;
+    pointer-events: none;
+}
+
+.surprises-page::before {
+    top: 180px;
+    left: -38px;
+}
+
+.surprises-page::after {
+    top: 470px;
+    right: -38px;
+}
+
 .surprises-crown {
-    font-size: 55px;
+    font-size: 58px;
     color: #c49a52;
     margin-bottom: 12px;
-    text-shadow: 0 3px 12px #e8c98b;
+    text-shadow: 0 3px 15px #e8c98b;
+    animation: crownFloat 4s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
 }
 
 .surprise-sparkle {
     position: absolute;
-    color: #d5ad70;
+    color: #cda45e;
     font-size: 25px;
     animation: surpriseFloat 4s ease-in-out infinite;
     pointer-events: none;
@@ -58,7 +96,7 @@
 @keyframes surpriseFloat {
     0%, 100% {
         transform: translateY(0) rotate(0deg);
-        opacity: 0.65;
+        opacity: 0.45;
     }
 
     50% {
@@ -71,119 +109,249 @@
    HEADINGS
 ===================================== */
 
+.royal-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #b18a72;
+}
+
 .surprises-heading {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(38px, 8vw, 58px);
-    line-height: 1.1;
+    font-size: clamp(40px, 9vw, 60px);
+    line-height: 1.05;
     font-weight: 600;
     margin: 15px 0;
+    color: #98647e;
+    text-shadow: 0 3px 15px rgba(189, 130, 159, 0.12);
 }
 
 .surprises-heading span {
     display: block;
-    color: #bd829f;
+    color: #c17f9e;
     font-style: italic;
 }
 
 .surprises-subheading {
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    line-height: 1.8;
+    font-size: 12px;
+    line-height: 1.9;
     max-width: 340px;
-    margin: 8px auto 35px;
+    margin: 8px auto 38px;
+    color: #98788c;
 }
 
 /* =====================================
-   SURPRISE GIFT CARDS
+   GIFT COLLECTION
 ===================================== */
 
 .surprise-gifts {
     width: 100%;
-    max-width: 430px;
+    max-width: 440px;
+
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 25px;
 }
+
+/* =====================================
+   INDIVIDUAL TREASURE BOXES
+===================================== */
 
 .surprise-gift {
-    padding: 28px 20px;
-    border: 1px solid #e8c9d8;
-    border-radius: 24px;
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 10px 30px rgba(146, 93, 120, 0.09);
-    backdrop-filter: blur(8px);
+    position: relative;
+
+    padding: 32px 21px 27px;
+
+    border: 1px solid #e4c4d1;
+    border-radius: 22px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255,255,255,0.96),
+            rgba(255,247,249,0.91));
+
+    box-shadow:
+        0 12px 30px rgba(146, 93, 120, 0.10),
+        0 3px 8px rgba(255,255,255,0.9),
+        inset 0 0 0 5px rgba(255,255,255,0.45);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.gift-icon {
-    font-size: 43px;
-    margin-bottom: 10px;
+/* GOLDEN INNER BORDER */
+
+.surprise-gift::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(205, 164, 94, 0.30);
+    border-radius: 16px;
+    pointer-events: none;
 }
+
+/* DECORATIVE TOP ORNAMENT */
+
+.surprise-gift::after {
+    content: "✧";
+    position: absolute;
+    top: 13px;
+    right: 17px;
+    font-size: 18px;
+    color: #d1ad72;
+    opacity: 0.8;
+}
+
+.surprise-gift:active {
+    transform: scale(0.985);
+}
+
+/* =====================================
+   GIFT ICONS
+===================================== */
+
+.gift-icon {
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 17px;
+
+    font-size: 43px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle, #fff 0%, #fff3f7 70%, #f8dce8 100%);
+
+    border: 1px solid #e8c8d5;
+
+    box-shadow:
+        0 6px 18px rgba(189, 130, 159, 0.17),
+        inset 0 0 12px rgba(255,255,255,0.9);
+}
+
+/* INDIVIDUAL GIFT COLORS */
+
+#reminderGift .gift-icon {
+    background: radial-gradient(circle, #fff, #fff0f3);
+}
+
+#hugGift .gift-icon {
+    background: radial-gradient(circle, #fff, #fce8ed);
+}
+
+#kissGift .gift-icon {
+    background: radial-gradient(circle, #fff, #ffe6ef);
+}
+
+/* =====================================
+   GIFT TITLES AND DESCRIPTIONS
+===================================== */
 
 .surprise-gift h2 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 29px;
+    font-size: 31px;
     font-weight: 600;
-    color: #95647e;
-    margin: 5px 0 8px;
+    color: #98647e;
+    margin: 5px 0 9px;
 }
 
 .surprise-gift p {
     font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    line-height: 1.7;
-    margin: 0 auto 18px;
-    color: #92778a;
+    font-size: 11px;
+    line-height: 1.8;
+    margin: 0 auto 21px;
+    color: #98788c;
 }
 
 /* =====================================
-   BUTTONS
+   ROYAL BUTTONS
 ===================================== */
 
 .surprise-gift button {
-    border: none;
-    border-radius: 30px;
-    padding: 13px 22px;
-    background: linear-gradient(135deg, #c58ba8, #a86e90);
+    position: relative;
+    z-index: 1;
+
+    border: 1px solid #e0c18e;
+    border-radius: 35px;
+
+    padding: 14px 24px;
+
+    background:
+        linear-gradient(135deg, #d99ab5, #b77798);
+
     color: white;
+
     font-family: 'Poppins', sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 1.3px;
+
+    box-shadow:
+        0 6px 17px rgba(168, 110, 144, 0.23),
+        inset 0 1px 2px rgba(255,255,255,0.35);
+
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(168, 110, 144, 0.2);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .surprise-gift button:active {
-    transform: scale(0.95);
+    transform: scale(0.94);
+    box-shadow: 0 3px 8px rgba(168, 110, 144, 0.2);
 }
 
 /* =====================================
-   REVEALED MESSAGES
+   MESSAGE REVEALS
 ===================================== */
 
 .gift-reveal {
     display: none;
-    margin-top: 20px;
-    padding: 17px;
-    border-radius: 16px;
-    background: #fff3f8;
+
+    position: relative;
+
+    margin-top: 23px;
+    padding: 23px 17px;
+
+    border: 1px solid #e7d2af;
+    border-radius: 5px;
+
+    background:
+        linear-gradient(135deg, #fffdf6, #fff5e9, #fffaf1);
+
     color: #805c72;
+
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-    line-height: 1.9;
+    font-size: 12px;
+    line-height: 2;
+
     white-space: pre-line;
+
+    box-shadow:
+        inset 0 0 18px rgba(198,155,85,0.07),
+        0 5px 15px rgba(112,76,83,0.07);
 }
 
 .gift-reveal.show {
     display: block;
-    animation: revealGift 0.6s ease both;
+    animation: revealGift 0.65s ease both;
 }
 
 @keyframes revealGift {
     from {
         opacity: 0;
-        transform: translateY(12px) scale(0.97);
+        transform: translateY(15px) scale(0.97);
     }
 
     to {
@@ -197,40 +365,19 @@
 ===================================== */
 
 .surprises-footer {
-    margin-top: 38px;
+    margin-top: 43px;
+
     font-family: 'Poppins', sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 2px;
-    line-height: 2;
-    color: #ad8199;
+    line-height: 2.2;
+
+    color: #b18a72;
 }
 
 /* =====================================
-   MOBILE ADJUSTMENTS
+   FLOATING HEART PARTICLES
 ===================================== */
-
-@media (max-width: 380px) {
-
-    .surprises-page {
-        padding: 35px 15px 28px;
-    }
-
-    .surprise-gift {
-        padding: 24px 16px;
-    }
-
-    .surprises-heading {
-        font-size: 37px;
-    }
-
-}
-
-
-/* =====================================
-   MAGICAL GIFT ANIMATIONS
-===================================== */
-
-/* HEART PARTICLES */
 
 .love-particle {
     position: fixed;
@@ -259,51 +406,38 @@
     }
 }
 
-/* TEDDY HUG */
+/* =====================================
+   TEDDY HUG
+===================================== */
 
 #hugGift.hugging .gift-icon {
     animation: teddyHug 0.7s ease-in-out;
 }
 
 @keyframes teddyHug {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    30% {
-        transform: scale(1.35);
-    }
-
-    55% {
-        transform: scale(0.9);
-    }
-
-    75% {
-        transform: scale(1.2);
-    }
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.35); }
+    55% { transform: scale(0.9); }
+    75% { transform: scale(1.2); }
 }
 
-/* KISS ANIMATION */
+/* =====================================
+   KISS ANIMATION
+===================================== */
 
 #kissGift.kissing .gift-icon {
     animation: kissBounce 0.6s ease-in-out;
 }
 
 @keyframes kissBounce {
-    0%, 100% {
-        transform: scale(1) rotate(0);
-    }
-
-    40% {
-        transform: scale(1.35) rotate(-12deg);
-    }
-
-    70% {
-        transform: scale(0.9) rotate(12deg);
-    }
+    0%, 100% { transform: scale(1) rotate(0); }
+    40% { transform: scale(1.35) rotate(-12deg); }
+    70% { transform: scale(0.9) rotate(12deg); }
 }
 
-/* REMINDER HEART GLOW */
+/* =====================================
+   REMINDER GLOW
+===================================== */
 
 #reminderGift.reminding {
     animation: reminderGlow 1.2s ease-in-out;
@@ -319,7 +453,37 @@
     }
 }
 
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 380px) {
+
+    .surprises-page {
+        padding: 35px 15px 28px;
+    }
+
+    .surprise-gift {
+        padding: 27px 16px;
+    }
+
+    .surprises-heading {
+        font-size: 37px;
+    }
+
+    .gift-reveal {
+        padding: 19px 13px;
+        font-size: 11px;
+    }
+}
+
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
 @media (prefers-reduced-motion: reduce) {
+    .surprise-sparkle,
+    .surprises-crown,
     .love-particle,
     #hugGift.hugging .gift-icon,
     #kissGift.kissing .gift-icon,
@@ -327,4 +491,3 @@
         animation: none;
     }
 }
-
