@@ -89,6 +89,7 @@ if (
 
     }
 
+
     // =====================================
     // FOLLOW THE WRITING NATURALLY
     // =====================================
@@ -114,14 +115,13 @@ if (
             return;
         }
 
-        const comfortableZone = window.innerHeight * 0.68;
-        const targetZone = window.innerHeight * 0.43;
+        const targetZone = window.innerHeight * 0.55;
 
-        if (position.bottom > comfortableZone) {
+        if (position.bottom > targetZone) {
 
             scrollTarget =
                 window.scrollY +
-                position.top -
+                position.bottom -
                 targetZone;
 
             if (scrollFrame === null) {
@@ -141,23 +141,18 @@ if (
             return;
         }
 
-        const currentPosition = window.scrollY;
-        const difference = scrollTarget - currentPosition;
+        const difference = scrollTarget - window.scrollY;
 
-        if (Math.abs(difference) < 0.5) {
-
-            window.scrollTo(0, scrollTarget);
+        if (Math.abs(difference) < 1) {
             scrollFrame = null;
             return;
         }
 
-        const nextPosition =
-            currentPosition + difference * 0.075;
-
-        window.scrollTo(0, nextPosition);
+        window.scrollBy(0, difference * 0.12);
 
         scrollFrame = requestAnimationFrame(smoothScroll);
     }
+   
 
     // =====================================
     // TYPEWRITER FUNCTION
