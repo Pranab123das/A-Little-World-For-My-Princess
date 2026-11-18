@@ -45,12 +45,36 @@ if (
     // =====================================
 
     let scrollFrame = null;
-    let scrollTarget = 0;
-    let userHasTakenControl = false;
+let scrollTarget = 0;
+let userHasTakenControl = false;
+let manualScrollTimer = null;
+
+    // =====================================
 
     // =====================================
     // RESPECT MANUAL SCROLLING
     // =====================================
+
+    function stopAutoScroll() {
+
+        userHasTakenControl = true;
+
+        if (scrollFrame !== null) {
+            cancelAnimationFrame(scrollFrame);
+            scrollFrame = null;
+        }
+
+        clearTimeout(manualScrollTimer);
+
+        manualScrollTimer = setTimeout(function() {
+
+            userHasTakenControl = false;
+
+            // Resume following the current writing position
+            followWriting();
+
+        }, 1800);
+    }
 
     window.addEventListener("wheel", stopAutoScroll, {
         passive: true
@@ -77,17 +101,6 @@ if (
         }
 
     });
-
-    function stopAutoScroll() {
-
-        userHasTakenControl = true;
-
-        if (scrollFrame !== null) {
-            cancelAnimationFrame(scrollFrame);
-            scrollFrame = null;
-        }
-
-    }
 
 
     // =====================================
